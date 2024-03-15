@@ -10,7 +10,9 @@ const CommonHeader = () => {
   };
 
   const navbarStyle = {
-    backgroundColor: 'black', 
+    backgroundColor: 'black',
+   
+    
   };
 
   const homeLinkStyle = {

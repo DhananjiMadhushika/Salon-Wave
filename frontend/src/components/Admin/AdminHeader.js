@@ -21,6 +21,7 @@ const AdminHeader = () => {
 
   const navbarStyle = {
     backgroundColor: 'black', 
+    
   };
 
   const noBorderRight = {

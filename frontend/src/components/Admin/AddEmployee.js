@@ -56,15 +56,15 @@ function AddEmployee() {
   };
 
   return (
-    <div  style={{  paddingLeft: "180px",height:"700px",backgroundColor:'#e7dcf5' }}>
-      <div style={{textAlign:'center'}}><h1>Add Employees</h1></div>
+    <div  style={{  paddingLeft: "300px",height:"700px",backgroundColor:'#e7dcf5' }}>
+      <div style={{marginLeft:'270px'}}><h1>Add Employees</h1></div>
       <form encType="multipart/form-data" style={{
       backgroundColor: "rgba(255, 255, 255, 0.8)", 
       padding: "15px",
       borderRadius: "5px",
       boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)", 
       marginTop:"5px", marginRight:'200px',
-      width:'900px', height:"550px"}}>
+      width:'750px', height:"550px"}}>
         <div class="form-group">
           <label for="exampleInputEmail1">Employee Name</label>
           <input

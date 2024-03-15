@@ -46,22 +46,38 @@ router.route("/viewAppoinment").get((req,res) =>{
 
 
 })
+// View appointments for a specific user
+router.get("/viewAppointments/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  try {
+      const appointments = await Appointment.find({ userId: userId });
+      res.json(appointments);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
 
+// Update appointment
+router.put("/updateAppointment/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+      await Appointment.findByIdAndUpdate(id, req.body);
+      res.json({ message: "Appointment updated successfully" });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
 
-  /////////// cancel appoinment///////////
-
-  router.route("/cancelAppoinment/:id").delete(async(req, res) =>{
-    let appoinmentID = req.params.id;
-  
-    await Appoinment.findByIdAndDelete(appoinmentID)
-    .then(() =>{
-      res.status(200).send({status : "appoinment delete"})
-    }).catch((err)=>{
-      console.log(err.message);
-      res.status(500).send({status: "error with delete table" });
-    })
-  })
-
+// Delete appointment
+router.delete("/deleteAppointment/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+      await Appointment.findByIdAndDelete(id);
+      res.json({ message: "Appointment deleted successfully" });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
 
   //////////// find client///////
 

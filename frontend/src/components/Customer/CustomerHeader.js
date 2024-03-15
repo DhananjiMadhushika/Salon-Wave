@@ -14,6 +14,7 @@ const CustomerHeader = () => {
 
   const navbarStyle = {
     backgroundColor: 'black', 
+   
   };
 
   const homeLinkStyle = {

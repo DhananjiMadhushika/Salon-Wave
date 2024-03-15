@@ -69,6 +69,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: '#ddc9f5',
+    margin:'10px',
     padding: '20px',
   },
   topSection: {
