@@ -3,29 +3,36 @@ pipeline {
    
     
     stages { 
-        stage('SCM Checkout') {
+        stage('Checkout from Github') {
             steps {
-                retry(3) {
-                    git branch: 'main', url: 'https://github.com/HGSChandeepa/test-node'
+                script {
+                    echo 'Current directory:'
+                    bat 'dir'
+                    echo 'Cloning repository...'
+                    retry(3) {
+                        git branch: 'main', url: 'https://github.com/DhananjiMadhushika/Salon-Wave.git'
+                    }
                 }
             }
         }
         stage('Build Docker Image') {
             steps {  
-                bat 'docker build -t adomicarts/nodeapp-cuban:%BUILD_NUMBER% .'
+                bat 'docker build -t dhananji123/salon-app:%BUILD_NUMBER% .'
             }
         }
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'samin-docker', variable: 'samindocker')]) {
-   
-               bat'docker login -u adomicarts -p ${samindocker}'
+                withCredentials([string(credentialsId: 'salonapp-password', variable: 'salonapp_pass')]) {
+                    script {
+                        echo 'Logging in to Docker Hub...'
+                        bat "echo ${salonapp_pass} | docker login -u dhananji123 --password-stdin"
+                    }
                 }
             }
         }
         stage('Push Image') {
             steps {
-                bat 'docker push adomicarts/nodeapp-cuban:%BUILD_NUMBER%'
+                bat 'docker push dhananji123/salon-app:%BUILD_NUMBER%'
             }
         }
     }
