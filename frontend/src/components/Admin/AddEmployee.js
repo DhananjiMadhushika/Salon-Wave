@@ -12,13 +12,7 @@ function AddEmployee() {
 
   const [imageFiles, setImageFiles] = useState([]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewEmployee({
-      ...newEmployee,
-      [name]: value,
-    });
-  };
+
 
   const handleImageChange = (e) => {
     setImageFiles(e.target.files);
